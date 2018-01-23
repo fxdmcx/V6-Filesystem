@@ -1,0 +1,109 @@
+login as: xxh163430
+                        Department of Computer Science
+                        University of Texas at Dallas
+
+                Use of UTD Information Systems is subject to
+          the UTD Information Security and Acceptable Use Policy.
+
+  Pursuant to Texas Administrative Code 202:
+  (1) Unauthorized use is prohibited;
+  (2) Usage may be subject to security testing and monitoring;
+  (3) Misuse is subject to criminal prosecution; and
+  (4) No expectation of privacy except as otherwise provided by
+      applicable privacy laws.
+
+        If five (5) incorrect passwords are received from your IP address,
+      this system will ban your IP address access for twenty-four (24) hours.
+
+xxh163430@csgrads1.utdallas.edu's password:
+Last login: Wed Nov 30 12:51:40 2016 from cslab254055.campus.ad.utdallas.edu
+Sourcing /usr/local/etc/skel/global/profile
+{csgrads1:~} ls
+AndroidStudio  books  code  courses  Mail  perl5  public_html  putty.exe  v6fs  workspace  Xiaomeng Hou_assignment 4
+{csgrads1:~} cd v6fs/
+{csgrads1:~/v6fs} ls
+1.txt  fsaccess  fsaccess.c  lcd_test.c  shell.c  v6filesystem
+{csgrads1:~/v6fs} vim fsaccess.c
+{csgrads1:~/v6fs} ./fsaccess v6filesystem
+
+[v6 file system] following commands supported:
+=======================================================
+initfs block_num inode_num      //Initialize file system
+cpin externalfile v6-file       //copy external file into v6 fs
+                                  create new file named v6-file in current directory
+cpout v6-file externalfile      //copy v6 file out to external file system
+mkdir v6-dir                    //create v6-dir in current directory of v6 fs
+cd v6-dir                       //access v6-dir in current directory of v6 fs
+rm v6-file                      //delete v6-file if exists
+ls                              //list all files exist in current directory
+q                               //save chagnes and quit
+
+V6FS> initfs 5000 400
+V6FS> ls
+./    ../
+V6FS> mkdir temp1
+V6FS> mkdir temp2
+V6FS> ls
+./    ../    temp1/    temp2/
+V6FS> cpin shell.c test1.c
+cpin command successfully executed, totally 1892 bytes copied
+V6FS> ls
+./    ../    temp1/    temp2/    test1.c
+V6FS> cpin lcd_test.c test2.c
+cpin command successfully executed, totally 30714 bytes copied
+V6FS> ls
+./    ../    temp1/    temp2/    test1.c    test2.c
+V6FS> cd temp1
+V6FS> ls
+./    ../
+V6FS> cpin 1.txt 11.txt
+cpin command successfully executed, totally 35 bytes copied
+V6FS> ls
+./    ../    11.txt
+V6FS> cd ..
+V6FS> ls
+./    ../    temp1/    temp2/    test1.c    test2.c
+V6FS> ....
+Invalid command!
+V6FS> cpout test1.c shell2.c
+cpout command successfully executed, 1892 bytes written to file shell2.c
+V6FS> cpout test2.c lcd_test2.c
+cpout command successfully executed, 30714 bytes written to file lcd_test2.c
+V6FS> cd temp1
+V6FS> ls
+./    ../    11.txt
+V6FS> cpout 11.txt 11.txt
+cpout command successfully executed, 35 bytes written to file 11.txt
+V6FS> ls
+./    ../    11.txt
+V6FS> rm 11.txt
+command successfully executed, file 11.txt has been deleted
+V6FS> ls
+./    ../
+V6FS> cd ..
+V6FS> ls
+./    ../    temp1/    temp2/    test1.c    test2.c
+V6FS> rm test1.c
+command successfully executed, file test1.c has been deleted
+V6FS> ls
+./    ../    temp1/    temp2/    test2.c
+V6FS> q
+quit now!
+{csgrads1:~/v6fs} ls
+11.txt  1.txt  fsaccess  fsaccess.c  lcd_test2.c  lcd_test.c  shell2.c  shell.c  v6filesystem
+{csgrads1:~/v6fs} ls -l
+total 2680
+-rw-------+ 1 xxh163430 sn      35 Nov 30 13:24 11.txt
+-rw-------+ 1 xxh163430 sn      35 Nov 29 11:13 1.txt
+-rwx--x--x+ 1 xxh163430 sn   23058 Nov 30 12:58 fsaccess
+-rw-------+ 1 xxh163430 sn   24907 Nov 29 11:19 fsaccess.c
+-rw-------+ 1 xxh163430 sn   30714 Nov 30 13:23 lcd_test2.c
+-rw-------+ 1 xxh163430 sn   30714 Nov 28 21:47 lcd_test.c
+-rw-------+ 1 xxh163430 sn    1892 Nov 30 13:23 shell2.c
+-rw-------+ 1 xxh163430 sn    1892 Nov 19 19:55 shell.c
+-rw-------+ 1 xxh163430 sn 2560000 Nov 30 13:25 v6filesystem
+{csgrads1:~/v6fs} cat 1.txt
+abcdefg hijklmn opq rst uvw xyz!!!
+{csgrads1:~/v6fs} cat 11.txt
+abcdefg hijklmn opq rst uvw xyz!!!
+{csgrads1:~/v6fs}
